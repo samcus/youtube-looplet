@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/samcus/front-end-boilerplate/issues"
   },
-  "homepage": "https://github.com/samcus/front-end-boilerplate#readme"
+  "homepage": "https://github.com/samcus/front-end-boilerplate#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
