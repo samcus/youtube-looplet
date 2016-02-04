@@ -26,6 +26,8 @@
   "homepage": "https://github.com/samcus/front-end-boilerplate#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-sass": "^2.1.1"
+    "gulp-change": "^1.0.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-watch": "^4.3.5"
   }
 }
