@@ -1,6 +1,10 @@
-//@import "generic/generic"; // Reset & Grids
+@import "generic/**"; // Reset & Grids
 //@import "settings/settings"; // Global Variables & Config
-@import "tools/"; // Functions & Mixins & Animations & Fonts
+@import "tools/**"; // Functions & Mixins & Animations & Fonts
+//@import "bourbon";
+section {
+  @include linear-gradient(to top, red, orange);
+}
 //@import "base/base"; // Unstyled Elements
 //@import "objects/objects"; // Unstyled Design Patterns
 //@import "components/components"; // Self Contained Modules
