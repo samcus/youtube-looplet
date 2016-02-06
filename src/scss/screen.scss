@@ -3,7 +3,7 @@
 @import "tools/**"; // Functions & Mixins & Animations & Fonts
 //@import "bourbon";
 section {
-  @include linear-gradient(to top, red, orange);
+  @include linear-gradient(to top, red, blue);
 }
 //@import "base/base"; // Unstyled Elements
 //@import "objects/objects"; // Unstyled Design Patterns
