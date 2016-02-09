@@ -1,15 +1,21 @@
-var
+const
 gulp = require("gulp"),
 sass = require("gulp-sass"),
 sassGlob = require("gulp-sass-glob"),
 watch = require("gulp-watch"),
 concat = require("gulp-concat"),
-changed = require('gulp-changed');
+changed = require('gulp-changed'),
+del = require('del');
 
-gulp.task('default', ['sass', 'concatJS']);
+del.sync(['resources/**/*']);
+
+gulp.task('default', [
+  'copy', 'sass', 'concatJS',
+  'sass:watch', 'copy:watch', 'concatJS:watch'
+]);
 
 gulp.task('sass', function(){
-  gulp.src('src/scss/**/*.scss')
+  return gulp.src('src/scss/**/*.scss')
     .pipe(sassGlob())
     .pipe(sass({}).on('error', sass.logError))
     .pipe(gulp.dest('resources/stylesheets'));
@@ -22,5 +28,24 @@ gulp.task('concatJS', function(){
     .pipe(gulp.dest('resources/javascript'));
 });
 
-gulp.watch('src/scss/**/*.scss', ['sass']);
-gulp.watch('src/javascript/**/*.js', ['concatJS']);
+gulp.task('copy', function(){
+  return gulp.src(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'])
+    //.pipe(changed('resources/'))
+    .pipe(gulp.dest('resources/'));
+});
+
+gulp.task('sass:watch', function(){
+  gulp.watch('src/scss/**/*.scss', ["sass"]);
+});
+
+gulp.task('concatJS:watch', function(){
+  gulp.watch('src/javascript/**/*.js', ["concatJS"]);
+});
+
+gulp.task('copy:watch', function(){
+  gulp.watch(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'], ["copy"])
+});
+
+//gulp.watch('src/scss/**/*.scss', ['sass']);
+//gulp.watch('src/javascript/**/*.js', ['concatJS']);
+//gulp.watch(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'], ['copy']);
