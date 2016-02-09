@@ -4,7 +4,6 @@ sass = require("gulp-sass"),
 sassGlob = require("gulp-sass-glob"),
 watch = require("gulp-watch"),
 concat = require("gulp-concat"),
-changed = require('gulp-changed'),
 del = require('del');
 
 del.sync(['resources/**/*']);
@@ -45,7 +44,3 @@ gulp.task('concatJS:watch', function(){
 gulp.task('copy:watch', function(){
   gulp.watch(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'], ["copy"])
 });
-
-//gulp.watch('src/scss/**/*.scss', ['sass']);
-//gulp.watch('src/javascript/**/*.js', ['concatJS']);
-//gulp.watch(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'], ['copy']);
