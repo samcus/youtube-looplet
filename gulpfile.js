@@ -22,14 +22,12 @@ gulp.task('sass', function(){
 
 gulp.task('concatJS', function(){
   return gulp.src('src/javascript/**/*.js')
-    .pipe(changed('resources/javascript'))
     .pipe(concat('main.js'))
     .pipe(gulp.dest('resources/javascript'));
 });
 
 gulp.task('copy', function(){
   return gulp.src(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'])
-    //.pipe(changed('resources/'))
     .pipe(gulp.dest('resources/'));
 });
 
