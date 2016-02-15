@@ -4,6 +4,7 @@ sass = require("gulp-sass"),
 sassGlob = require("gulp-sass-glob"),
 watch = require("gulp-watch"),
 concat = require("gulp-concat"),
+cssnano = require('gulp-cssnano'),
 del = require('del');
 
 del.sync(['resources/**/*']);
@@ -17,6 +18,7 @@ gulp.task('sass', function(){
   return gulp.src('src/scss/**/*.scss')
     .pipe(sassGlob())
     .pipe(sass({}).on('error', sass.logError))
+    .pipe(cssnano())
     .pipe(gulp.dest('resources/stylesheets'));
 });
 
