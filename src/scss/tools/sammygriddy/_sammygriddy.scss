@@ -1,0 +1,144 @@
+// Define Breakpoints
+$mobile: 680px;
+$tablet: 960px;
+$desktop: 1280px;
+
+@mixin respond-to($media) {
+  @if $media == small-mobile {
+    @media (max-width: $mobile) { @content; }
+  }
+  @else if $media == mobile {
+    @media (min-width: $mobile ) { @content; }
+  }
+  @else if $media == tablet {
+    @media (min-width: $tablet ){ @content; }
+  }
+  @else if $media == desktop {
+    @media (min-width: $desktop) { @content; }
+  }
+}
+
+$sg--gutter: 1rem;
+// Define Spans
+@mixin defineSpan($sm,$m,$t,$d){
+    float: left;
+    min-height: 1px;
+    padding: $sg--gutter;
+    box-sizing: border-box;
+    @include respond-to(small-mobile) { width: $sm; };
+    @include respond-to(mobile) { width: $m;};
+    @include respond-to(tablet) { width: $t;};
+    @include respond-to(desktop)  { width: $d;};
+}
+
+// Required Styles
+.sg__container{
+  position: relative;
+  clear: both;
+  overflow: auto;
+}
+
+.sg__reverse > *{
+  float: right !important;
+}
+
+// Smart Columns
+.sg__smart-col:first-child:nth-last-child(1) {
+    @include defineSpan(100%,100%,100%,100%);
+}
+
+.sg__smart-col:first-child:nth-last-child(2),
+.sg__smart-col:first-child:nth-last-child(2) ~ .sg__smart-col {
+    @include defineSpan(100%,50%,50%,50%);
+}
+
+.sg__smart-col:first-child:nth-last-child(3),
+.sg__smart-col:first-child:nth-last-child(3) ~ .sg__smart-col {
+    @include defineSpan(100%,33.333%,33.333%,33.333%);
+}
+
+.sg__smart-col:first-child:nth-last-child(4),
+.sg__smart-col:first-child:nth-last-child(4) ~ .sg__smart-col {
+    @include defineSpan(100%,50%,25%,25%);
+}
+.sg__smart-col:first-child:nth-last-child(5),
+.sg__smart-col:first-child:nth-last-child(5) ~ .sg__smart-col {
+    @include defineSpan(100%,20%,20%,20%);
+}
+.sg__smart-col:first-child:nth-last-child(6),
+.sg__smart-col:first-child:nth-last-child(6) ~ .sg__smart-col {
+    @include defineSpan(100%,33.333%,16.666%,16.666%);
+}
+
+// Full
+.sg__1-1,.sg__2-2,.sg__3-3,
+.sg__4-4,.sg__5-5,.sg__6-6,
+.sg__8-8,.sg__10-10,.sg__12-12,
+.sg__full{ @include defineSpan(100%,100%,100%,100%); }
+// Half
+.sg__1-2,.sg__2-4,.sg__3-6,
+.sg__4-8,.sg__5-10,.sg__6-12,{ @include defineSpan(100%,50%,50%,50%); }
+// Thirds
+.sg__1-3{ @include defineSpan(100%,33.333%,33.333%,33.333%); }
+.sg__2-3{ @include defineSpan(100%,66.666%,66.666%,66.666%); }
+// Fourths
+.sg__1-4{ @include defineSpan(100%,25%,25%,25%); }
+.sg__2-4{ @include defineSpan(100%,50%,25%,25%); }
+.sg__3-4{ @include defineSpan(100%,75%,75%,75%); }
+// Fifths
+.sg__1-5{ @include defineSpan(100%,20%,20%,20%); }
+.sg__2-5{ @include defineSpan(100%,40%,40%,40%); }
+.sg__3-5{ @include defineSpan(100%,60%,60%,60%); }
+.sg__4-5{ @include defineSpan(100%,80%,80%,80%); }
+// Sixths
+.sg__1-6{ @include defineSpan(100%,16.666%,16.666%,16.666%); }
+.sg__2-6{ @include defineSpan(100%,33.333%,33.333%,33.333%); }
+.sg__4-6{ @include defineSpan(100%,66.666%,66.666%,66.666%); }
+
+.sg__2-12{ @include defineSpan(100%,16.666%,16.666%,16.666%); }
+.sg__10-12{ @include defineSpan(100%,83.333%,83.333%,66.333%); }
+
+// Optional Styles
+.sm__hide{
+  @include respond-to(small-mobile){
+    display: none;
+  };
+}
+
+.sg__img{
+  width: 95%;
+  height: 100%;
+}
+
+.sg__var{
+  width: auto;
+}
+
+.sg__center{
+  margin: 0 auto;
+  float: none;
+}
+
+.sg__table{
+  display: table;
+}
+
+.sg__hide-horiz{
+  overflow-x: hidden;
+}
+
+.sg__left{
+  margin: 0 auto;
+  float: left;
+  @include respond-to(small-mobile){
+    float: none;
+  }
+}
+
+.sg__right{
+  margin: 0 auto;
+  float: right !important;
+  @include respond-to(small-mobile){
+    float: none !important;
+  }
+}

@@ -7,14 +7,20 @@ concat = require("gulp-concat"),
 cssnano = require('gulp-cssnano'),
 del = require('del');
 
-del.sync(['resources/**/*']);
+function onError(err) {
+  console.log(err);
+  this.emit('end');
+}
 
 gulp.task('default', [
-  'copy', 'sass', 'concatJS',
-  'sass:watch', 'copy:watch', 'concatJS:watch'
+  'clean','sass','concatJS','copy','clean:watch'
 ]);
 
-gulp.task('sass', function(){
+gulp.task('clean', function (cb) {
+    return del(['resources/**/*']);
+});
+
+gulp.task('sass',['clean'], function(cb){
   return gulp.src('src/scss/**/*.scss')
     .pipe(sassGlob())
     .pipe(sass({}).on('error', sass.logError))
@@ -22,25 +28,19 @@ gulp.task('sass', function(){
     .pipe(gulp.dest('resources/stylesheets'));
 });
 
-gulp.task('concatJS', function(){
+gulp.task('concatJS',['clean','sass'], function(cb){
   return gulp.src('src/javascript/**/*.js')
     .pipe(concat('main.js'))
     .pipe(gulp.dest('resources/javascript'));
 });
 
-gulp.task('copy', function(){
+gulp.task('copy',['clean','sass','concatJS'], function(cb){
   return gulp.src(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'])
-    .pipe(gulp.dest('resources/'));
+    .pipe(gulp.dest('resources/'))
+    .on('error', onError);
 });
 
-gulp.task('sass:watch', function(){
-  gulp.watch('src/scss/**/*.scss', ["sass"]);
-});
-
-gulp.task('concatJS:watch', function(){
-  gulp.watch('src/javascript/**/*.js', ["concatJS"]);
-});
-
-gulp.task('copy:watch', function(){
-  gulp.watch(['src/**/*','!src/{scss,scss/**}','!src/{javascript,javascript/**}'], ["copy"])
+gulp.task('clean:watch', function(cb){
+  return gulp.watch('src/**/*', ["clean","sass","concatJS","copy"])
+  .on('error', onError);
 });

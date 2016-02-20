@@ -2,9 +2,6 @@
 //@import "settings/settings"; // Global Variables & Config
 @import "tools/**"; // Functions & Mixins & Animations & Fonts
 //@import "bourbon";
-section {
-  @include linear-gradient(to top, red, blue);
-}
 //@import "base/base"; // Unstyled Elements
 //@import "objects/objects"; // Unstyled Design Patterns
 //@import "components/components"; // Self Contained Modules
