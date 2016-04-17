@@ -1,0 +1,7 @@
+@mixin dummy-component($selector) {
+  #{$selector}__test{
+    background: black;
+  }
+}
+
+@include dummy-component(".dummy-component");
