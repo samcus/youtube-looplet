@@ -36,6 +36,9 @@
     "gulp-watch": "^4.3.5"
   },
   "dependencies": {
-    "del": "^2.2.0"
+    "del": "^2.2.0",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "express-favicon": "^1.0.1"
   }
 }
