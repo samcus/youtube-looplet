@@ -1,29 +1,29 @@
 {
-  "name": "front-end-boilerplate",
-  "version": "0.0.1",
-  "description": "Front-End Boilerplate to Speed Up Project Creation",
-  "main": "index.js",
+  "name": "youtube-looplet",
+  "version": "1.0.0",
+  "description": "Drag the bookmarklet link into your browser bookmarks toolbar, then go to a YouTube video and click 'YouTube Looplet' to loop a YouTube video!",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samcus/front-end-boilerplate.git"
+    "url": "git+https://github.com/samcus/youtube-looplet.git"
   },
   "keywords": [
-    "scss",
-    "gulpjs",
-    "nodejs",
-    "npm",
-    "js",
-    "html"
+    "youtube",
+    "loop",
+    "looper",
+    "video",
+    "bookmark",
+    "bookmarklet"
   ],
   "author": "Samuel Anthony Custer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/samcus/front-end-boilerplate/issues"
+    "url": "https://github.com/samcus/youtube-looplet/issues"
   },
-  "homepage": "https://github.com/samcus/front-end-boilerplate#readme",
+  "homepage": "https://github.com/samcus/youtube-looplet#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",

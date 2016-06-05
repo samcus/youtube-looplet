@@ -1,0 +1,37 @@
+body{
+  background-color: #272c2e;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+header{
+  background-color: white;
+  height: 3.5rem;
+  text-align: center;
+  img{
+    margin-top: .5rem;
+    height: 2.5rem;
+  }
+}
+
+footer{
+  margin-top: .5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  a{
+    color: white;
+  }
+}
+
+strong{
+  font-weight: bold;
+}
+
+h1{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 200;
+}
