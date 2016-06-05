@@ -26,8 +26,6 @@ app.get('*',function(req,res,next){
   }
 });
 
-
-
 app.listen(process.env.PORT || 8003, function () {
   console.log('Example app listening on port 80!', process.env.PORT );
 });
